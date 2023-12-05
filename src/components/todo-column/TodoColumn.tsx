@@ -23,7 +23,7 @@ const [showModal, setShowModal] = useState<boolean>(false);
         <div className="flex justify-between items-center h-20 ms-3 me-3">
           <div className="flex items-center">
           <svg height="15" width="15">
-            <circle cx="8" cy="8" r="4" stroke-width="3" fill={`${icon}`} />
+            <circle cx="8" cy="8" r="4" strokeWidth="3" fill={`${icon}`} />
           </svg>
             <h1 className="text-xl font-bold">{title}</h1>
             </div>
