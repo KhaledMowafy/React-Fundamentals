@@ -3,8 +3,9 @@ import React, {useState} from "react";
 type Iprops = {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setNotes: React.Dispatch<React.SetStateAction<object>>;
 };
-function PopupTodo({ showModal, setShowModal }: Iprops) {
+function PopupTodo({ showModal, setShowModal, setNotes }: Iprops) {
 
     // const [note, setNote] = useState()
     const [title, setTitle] = useState<string>('');
@@ -32,6 +33,7 @@ function PopupTodo({ showModal, setShowModal }: Iprops) {
                 'message': message,
                 'status': status
             })
+            setNotes(newNote)
             localStorage.setItem('note', JSON.stringify(newNote));
         }else{
             newNote.push({
@@ -39,12 +41,14 @@ function PopupTodo({ showModal, setShowModal }: Iprops) {
                 'message': message,
                 'status': status
             })
+            setNotes(newNote)
             localStorage.setItem('note', JSON.stringify(newNote));
         }
 
     }
   return (
     <div>
+        
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

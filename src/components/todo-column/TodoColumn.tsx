@@ -7,16 +7,17 @@ type Iprops = {
   icon: string;
   title: string;
   children?: React.ReactNode;
+  setNotes: React.Dispatch<React.SetStateAction<object>>;
 };
 
 
-function TodoColumn({ color, icon, title, children }: Iprops) {
+function TodoColumn({ color, icon, title, children, setNotes }: Iprops) {
 
 const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <>
-        <PopupTodo showModal={showModal} setShowModal={setShowModal}/>
+        <PopupTodo showModal={showModal} setShowModal={setShowModal} setNotes={setNotes}/>
       <div
         className={` bg-[${color}] rounded-lg shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] w-full`}
       >
