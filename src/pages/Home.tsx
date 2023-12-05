@@ -1,5 +1,6 @@
 import React from "react";
 import TodoColumn from "../components/todo-column/TodoColumn";
+import TodoAction from "../components/todo-action/TodoAction";
 
 type Iprops = {
   show: boolean;
@@ -11,7 +12,9 @@ function Home({ show }: Iprops) {
     >
       <div className="flex justify-around">
         <div className= "w-3/12">
-            <TodoColumn color="#dbeaff" icon="#4D96FF" title="To-Do" />
+            <TodoColumn color="#dbeaff" icon="#4D96FF" title="To-Do">
+              <TodoAction/>
+              </TodoColumn>
         </div>
         <div className= "w-3/12">
             <TodoColumn color="#FFE3CD" icon="#FFA453" title="In Progress" />
