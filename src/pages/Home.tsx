@@ -8,10 +8,13 @@ type Iprops = {
 function Home({ show }: Iprops) {
   const [notes, setNotes] = useState(() => {
     if (localStorage.getItem("note") !== null) {
-      return JSON.parse(localStorage.getItem("note") || "{}");
+      return JSON.parse(localStorage.getItem("note") || "[]");
+    }else{
+      return []
     }
   });
   const [alert, setAlert] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     setAlert(true)
@@ -46,10 +49,12 @@ function Home({ show }: Iprops) {
             icon="#4D96FF"
             title="To-Do"
             setNotes={setNotes}
+            showModal={showModal}
+            setShowModal={setShowModal}
           >
             {notes.map(
               (
-                item: { title: string; message: string; status: string },
+                item: { title: string; message: string; status: string, id:string },
                 index: number
               ) =>
                 item.status === "todo" ? (
@@ -57,6 +62,9 @@ function Home({ show }: Iprops) {
                     title={item.title}
                     message={item.message}
                     key={index}
+                    notes={notes}
+                    id={item.id}
+                    status={item.status}
                   />
                 ) : (
                   ""
@@ -70,17 +78,22 @@ function Home({ show }: Iprops) {
             icon="#FFA453"
             title="In Progress"
             setNotes={setNotes}
+            showModal={showModal}
+            setShowModal={setShowModal}
           >
             {notes.map(
               (
-                item: { title: string; message: string; status: string },
+                item: { title: string; message: string; status: string; id:string },
                 index: number
               ) =>
                 item.status === "progress" ? (
                   <TodoAction
                     title={item.title}
                     message={item.message}
+                    id={item.id}
                     key={index}
+                    notes={notes}
+                    status={item.status}
                   />
                 ) : (
                   ""
@@ -94,10 +107,12 @@ function Home({ show }: Iprops) {
             icon="#6CCB78"
             title="Complete"
             setNotes={setNotes}
+            showModal={showModal}
+            setShowModal={setShowModal}
           >
             {notes.map(
               (
-                item: { title: string; message: string; status: string },
+                item: { title: string; message: string; status: string; id:string },
                 index: number
               ) =>
                 item.status === "completed" ? (
@@ -105,6 +120,9 @@ function Home({ show }: Iprops) {
                     title={item.title}
                     message={item.message}
                     key={index}
+                    id={item.id}
+                    notes={notes}
+                    status={item.status}
                   />
                 ) : (
                   ""

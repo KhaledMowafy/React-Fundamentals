@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { MdAdd } from "react-icons/md";
 import PopupTodo from "../popup-todo/PopupTodo";
 
@@ -8,16 +8,17 @@ type Iprops = {
   title: string;
   children?: React.ReactNode;
   setNotes: React.Dispatch<React.SetStateAction<object>>;
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 
-function TodoColumn({ color, icon, title, children, setNotes }: Iprops) {
+function TodoColumn({ color, icon, title, children, setNotes, showModal, setShowModal }: Iprops) {
 
-const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <>
-        <PopupTodo showModal={showModal} setShowModal={setShowModal} setNotes={setNotes}/>
+        <PopupTodo showModal={showModal} setShowModal={setShowModal} setNotes={setNotes} TodoId="" TodoMessage="" TodoTitle="" TodoStatus=""/>
       <div
         className={` bg-[${color}] rounded-lg shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] w-full`}
       >
