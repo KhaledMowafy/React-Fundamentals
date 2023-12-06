@@ -9,6 +9,8 @@ type Iprops = {
   TodoId:string;
   TodoStatus:string;
 };
+
+
 function PopupTodo({ showModal, setShowModal, setNotes, TodoTitle, TodoMessage, TodoId, TodoStatus }: Iprops) {
 
     // const [note, setNote] = useState()
@@ -32,7 +34,7 @@ function PopupTodo({ showModal, setShowModal, setNotes, TodoTitle, TodoMessage, 
 
     const submitNote = ()=>{
         if(TodoId!==''){
-            const notes = JSON.parse(localStorage.getItem('note')||'{}')
+            const notes: Array<{title: string, message: string, status:string, id:string}> = JSON.parse(localStorage.getItem('note')||'{}')
             notes.map((item)=>{
                 if(TodoId==item.id){
                     item.title=title,

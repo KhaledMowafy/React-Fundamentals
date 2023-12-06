@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import TodoColumn from "../components/todo-column/TodoColumn";
 import TodoAction from "../components/todo-action/TodoAction";
 
